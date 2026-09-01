@@ -10,6 +10,7 @@ export default defineContentConfig({
         image: z.string().optional(),
         color: z.string().optional(),
         description: z.string().optional(),
+        pdfPath: z.string().optional()
       }),
     }),
   },

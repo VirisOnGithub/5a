@@ -4,7 +4,10 @@ const props = defineProps<{ item: ContentItem }>();
 
 <template>
     <NuxtLink :to="item.path">
-        <UCard class="group overflow-hidden relative border-0 bg-gray-900">
+        <UCard
+            class="group overflow-hidden relative dark:bg-slate-950 bg-gray-200"
+            :ui="{}"
+        >
             <div class="relative h-80 w-full overflow-hidden">
                 <img
                     v-if="item.image"
@@ -20,14 +23,14 @@ const props = defineProps<{ item: ContentItem }>();
                 />
 
                 <div
-                    class="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-70"
+                    class="absolute inset-0 bg-linear-to-t dark:from-gray-950 from-gray-200 via-gray-950/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-70"
                 />
 
                 <div
                     class="absolute bottom-0 left-0 right-0 p-6 z-10 space-y-3"
                 >
                     <h3
-                        class="text-2xl font-black tracking-tight text-white leading-snug drop-shadow-sm group-hover:text-emerald-200 transition-colors duration-300"
+                        class="text-2xl font-black tracking-tight dark:text-white text-black leading-snug drop-shadow-sm dark:group-hover:text-emerald-200 group-hover:text-emerald-900 transition-colors duration-300"
                     >
                         {{ item.title }}
                     </h3>

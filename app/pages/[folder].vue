@@ -8,7 +8,7 @@ const folder = folderNav.length === 1 ? folderNav[0] : undefined;
 <template>
     <UButton
         to="/"
-        class="p-2 m-2 border border-white bg-transparent text-white"
+        class="p-2 m-2 border dark:border-white border-black bg-transparent dark:text-white text-black dark:hover:text-black dark:hover:bg-white"
     >
         &larr; Retour à l'accueil
     </UButton>
