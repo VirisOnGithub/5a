@@ -11,7 +11,7 @@ export interface ContentItem {
 
 export const useAsyncClassData = async (children: boolean): Promise<Ref<ContentItem[]>> => {
   const { data: navigation } = await useAsyncData(children ? "navigation-c": "navigation", () => {
-      const allData = queryCollectionNavigation("class", ["image", "color"])
+      const allData = queryCollectionNavigation("fifthyear", ["image", "color"])
       return (
         children ? allData : allData.then((items) => items.map(({ children, ...rest }) => rest))
       );
