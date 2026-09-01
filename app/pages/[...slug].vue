@@ -13,11 +13,13 @@ useSeoMeta({
 
 <template>
     <UButton
-        to="/"
+        v-if="post?.path"
+        :to="getParentPath(post?.path)"
         class="p-2 m-2 border border-white bg-transparent text-white"
     >
-        &larr; Retour à l'accueil
+        &larr; Précédent
     </UButton>
+    <!-- <pre><code>{{post}}</code></pre> -->
     <div class="py-4"></div>
     <ContentRenderer v-if="post" :value="post" />
     <div v-else>Post not found</div>

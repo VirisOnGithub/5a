@@ -1,5 +1,5 @@
 ---
-image: /images/sma.jpg
+color: blue
 ---
 # CM1
 
