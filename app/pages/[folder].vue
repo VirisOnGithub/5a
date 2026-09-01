@@ -17,5 +17,5 @@ const folder = folderNav.length === 1 ? folderNav[0] : undefined;
         <FolderCard :item="item" v-for="item in folder.children" />
     </div>
 
-    <pre><code>{{ folder }}</code></pre>
+    <!-- <pre><code>{{ folder }}</code></pre> -->
 </template>
