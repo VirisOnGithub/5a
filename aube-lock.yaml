@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@nuxt/content':
         specifier: ^3.16.0
-        version: 3.16.0
+        version: 3.16.0(better-sqlite3@13.0.3)
       '@nuxt/image':
         specifier: 2.1.0
         version: 2.1.0(magic-string@1.2.3)(rolldown@1.2.6)(unplugin@3.3.0(esbuild@0.28.2)(rolldown@1.2.6)(rollup@4.63.1))
       '@nuxt/ui':
         specifier: ^4.11.0
-        version: 4.11.0(6126c6eb3f9bb2fbd2bc1c8ac6213943)
+        version: 4.11.0(b14cbed92499bbcb63e068bb61002914)
       '@tiptap/core':
         specifier: ^3
         version: 3.30.5(@tiptap/pm@3.30.5)
@@ -68,6 +68,9 @@ importers:
       '@tiptap/vue-3':
         specifier: ^3
         version: 3.30.5(@floating-ui/dom@1.8.0)(@tiptap/core@3.30.5(@tiptap/pm@3.30.5))(@tiptap/pm@3.30.5)(vue@3.5.42(typescript@5.9.3))
+      better-sqlite3:
+        specifier: ^13.0.3
+        version: 13.0.3
       nuxt:
         specifier: ^4.5.2
         version: 4.5.2(rolldown@1.2.6)
@@ -2292,6 +2295,10 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  better-sqlite3@13.0.3:
+    resolution: {integrity: sha512-RbOBxmLBG8uvFUc15X9+9SFemKcQ0WBuISBVkpuiaUB2qblC8UWlHEjdWVoZ8AdhSwmoEgsiXKfopX0CQxaACQ==}
+    engines: {node: '>=22'}
+
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
@@ -3782,6 +3789,10 @@ packages:
     peerDependenciesMeta:
       xml2js:
         optional: true
+
+  node-addon-api@8.9.2:
+    resolution: {integrity: sha512-VijLXbi3UACN69I0JVXJsX4tjACjNoQDgv2gTF6sx2wWEi8tkSg2eX8p5gSIFi8z2+DL3oHmY6OyKce38SDolg==}
+    engines: {node: ^18 || ^20 || >= 21}
 
   node-emoji@2.2.0:
     resolution: {integrity: sha512-Z3lTE9pLaJF47NyMhd4ww1yFTAP8YhYI8SleJiHzM46Fgpm5cnNzSl9XfzFNqbaz+VlJrIj3fXQ4DeN1Rjm6cw==}
@@ -5982,7 +5993,7 @@ snapshots:
       - magicast
       - supports-color
 
-  '@nuxt/content@3.16.0':
+  '@nuxt/content@3.16.0(better-sqlite3@13.0.3)':
     dependencies:
       '@nuxt/kit': 4.5.2(magic-string@1.2.3)(rolldown@1.2.6)(unplugin@3.3.0(esbuild@0.28.2)(rolldown@1.2.6)(rollup@4.63.1))
       '@nuxtjs/mdc': 0.23.1(magic-string@1.2.3)(rolldown@1.2.6)(unplugin@3.3.0(esbuild@0.28.2)(rolldown@1.2.6)(rollup@4.63.1))
@@ -5990,6 +6001,7 @@ snapshots:
       '@sqlite.org/sqlite-wasm': 3.53.0-build1
       '@standard-schema/spec': 1.1.0
       '@webcontainer/env': 1.1.1
+      better-sqlite3: 13.0.3
       c12: 3.3.4
       chokidar: 5.0.0
       consola: 3.4.2
@@ -6300,7 +6312,6 @@ snapshots:
       - aws4fetch
       - bare-abort-controller
       - bare-buffer
-      - better-sqlite3
       - bun-types-no-globals
       - db0
       - drizzle-orm
@@ -6339,13 +6350,13 @@ snapshots:
       rc9: 3.0.1
       std-env: 4.2.0
 
-  '@nuxt/ui@4.11.0(6126c6eb3f9bb2fbd2bc1c8ac6213943)':
+  '@nuxt/ui@4.11.0(b14cbed92499bbcb63e068bb61002914)':
     dependencies:
       '@floating-ui/dom': 1.8.0
       '@iconify/vue': 5.0.1(vue@3.5.42(typescript@5.9.3))
       '@internationalized/date': 3.12.3
       '@internationalized/number': 3.6.7
-      '@nuxt/content': 3.16.0
+      '@nuxt/content': 3.16.0(better-sqlite3@13.0.3)
       '@nuxt/fonts': 0.14.0(esbuild@0.28.2)(magic-string@1.2.3)(rolldown@1.2.6)(rollup@4.63.1)(vite@8.2.2(jiti@2.7.0))
       '@nuxt/icon': 2.5.1(magic-string@1.2.3)(rolldown@1.2.6)(unplugin@3.3.0(esbuild@0.28.2)(rolldown@1.2.6)(rollup@4.63.1))(vite@8.2.2(jiti@2.7.0))(vue@3.5.42(typescript@5.9.3))
       '@nuxt/kit': 4.5.2(magic-string@1.2.3)(rolldown@1.2.6)(unplugin@3.3.0(esbuild@0.28.2)(rolldown@1.2.6)(rollup@4.63.1))
@@ -7656,6 +7667,10 @@ snapshots:
 
   baseline-browser-mapping@2.11.20: {}
 
+  better-sqlite3@13.0.3:
+    dependencies:
+      node-addon-api: 8.9.2
+
   bindings@1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
@@ -7926,7 +7941,9 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  db0@0.3.4: {}
+  db0@0.3.4(better-sqlite3@13.0.3):
+    dependencies:
+      better-sqlite3: 13.0.3
 
   db0@0.4.0: {}
 
@@ -9392,7 +9409,7 @@ snapshots:
       cookie-es: 2.0.1
       croner: 10.0.1
       crossws: 0.3.5
-      db0: 0.3.4
+      db0: 0.3.4(better-sqlite3@13.0.3)
       defu: 6.1.7
       destr: 2.0.5
       dot-prop: 10.2.0
@@ -9438,7 +9455,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       unimport: 6.4.0(rolldown@1.2.6)
       unplugin-utils: 0.3.2
-      unstorage: 1.17.5(db0@0.3.4)(ioredis@5.11.1)
+      unstorage: 1.17.5(db0@0.3.4(better-sqlite3@13.0.3))(ioredis@5.11.1)
       untyped: 2.0.0
       unwasm: 0.5.3
       youch: 4.1.1
@@ -9466,7 +9483,6 @@ snapshots:
       - aws4fetch
       - bare-abort-controller
       - bare-buffer
-      - better-sqlite3
       - bun-types-no-globals
       - drizzle-orm
       - encoding
@@ -9480,6 +9496,8 @@ snapshots:
       - uploadthing
       - vite
       - webpack
+
+  node-addon-api@8.9.2: {}
 
   node-emoji@2.2.0:
     dependencies:
@@ -9642,7 +9660,6 @@ snapshots:
       - aws4fetch
       - bare-abort-controller
       - bare-buffer
-      - better-sqlite3
       - bufferutil
       - bun-types-no-globals
       - cac
@@ -10961,11 +10978,11 @@ snapshots:
       ofetch: 1.5.1
       ufo: 1.6.4
 
-  unstorage@1.17.5(db0@0.3.4)(ioredis@5.11.1):
+  unstorage@1.17.5(db0@0.3.4(better-sqlite3@13.0.3))(ioredis@5.11.1):
     dependencies:
       anymatch: 3.1.3
       chokidar: 5.0.0
-      db0: 0.3.4
+      db0: 0.3.4(better-sqlite3@13.0.3)
       destr: 2.0.5
       h3: 1.15.11
       ioredis: 5.11.1
