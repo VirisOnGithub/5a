@@ -33,7 +33,7 @@ async function handleLogin(payload: FormSubmitEvent<Schema>) {
             body: { password: payload.data.password },
         });
 
-        navigateTo("/");
+        await navigateTo("/");
     } catch (err) {
         error.value = true;
     }
@@ -42,28 +42,26 @@ async function handleLogin(payload: FormSubmitEvent<Schema>) {
 
 <template>
     <div class="flex flex-col items-center justify-center gap-4 p-4">
-        <ClientOnly>
-            <UPageCard class="w-full max-w-md">
-                <UAuthForm
-                    :schema="schema"
-                    title="Login"
-                    description="Enter your credentials to access your account."
-                    icon="i-lucide-user"
-                    :fields="fields"
-                    @submit="handleLogin"
-                    :submit="{
-                        label: 'Submit',
-                        color: 'info',
-                        variant: 'subtle',
-                    }"
-                />
-                <div
-                    v-if="error"
-                    class="text-error-600 border-error-600 border text-center rounded-xl py-2 mt-4"
-                >
-                    Mot de passe incorrect
-                </div>
-            </UPageCard>
-        </ClientOnly>
+        <UPageCard class="w-full max-w-md">
+            <UAuthForm
+                :schema="schema"
+                title="Login"
+                description="Enter your credentials to access your account."
+                icon="i-lucide-user"
+                :fields="fields"
+                @submit="handleLogin"
+                :submit="{
+                    label: 'Submit',
+                    color: 'info',
+                    variant: 'subtle',
+                }"
+            />
+            <div
+                v-if="error"
+                class="text-error-600 border-error-600 border text-center rounded-xl py-2 mt-4"
+            >
+                Mot de passe incorrect
+            </div>
+        </UPageCard>
     </div>
 </template>

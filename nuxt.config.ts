@@ -19,6 +19,6 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    popoPassword: process.env.POPO
+    popoPassword: ''
   }
 });
