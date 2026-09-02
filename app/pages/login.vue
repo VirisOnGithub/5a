@@ -2,10 +2,7 @@
 import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
 import * as z from "zod";
 
-const config = useRuntimeConfig();
-
 const error = ref(false);
-const authCookie = useCookie("auth", { maxAge: 60 * 60 * 24 * 7 });
 
 definePageMeta({
     layout: "login",
@@ -22,49 +19,51 @@ const fields: AuthFormField[] = [
 ];
 
 const schema = z.object({
-    password: z
-        .string("Password is required")
-        .min(5, "Must be at least 5 characters"),
+    password: z.string().min(5, "Must be at least 5 characters"),
 });
-
-function handleLogin(payload: FormSubmitEvent<Schema>) {
-    if (payload.data.password === config.popoPassword) {
-        authCookie.value = "authenticated";
-        navigateTo("/");
-    } else {
-        error.value = true;
-    }
-}
 
 type Schema = z.output<typeof schema>;
 
-const popo = process.env.POPO;
+async function handleLogin(payload: FormSubmitEvent<Schema>) {
+    error.value = false;
+
+    try {
+        await $fetch("/api/login", {
+            method: "POST",
+            body: { password: payload.data.password },
+        });
+
+        navigateTo("/");
+    } catch (err) {
+        error.value = true;
+    }
+}
 </script>
 
 <template>
     <div class="flex flex-col items-center justify-center gap-4 p-4">
-        <UPageCard class="w-full max-w-md">
-            <UAuthForm
-                :schema="schema"
-                title="Login"
-                description="Enter your credentials to access your account."
-                icon="i-lucide-user"
-                :fields="fields"
-                @submit.prevent="handleLogin"
-                :submit="{
-                    label: 'Submit',
-                    color: 'info',
-                    variant: 'subtle',
-                }"
-            />
-            <div
-                v-if="error"
-                class="text-error-600 border-error-600 border text-center rounded-xl py-2"
-            >
-                Mot de passe incorrect
-            </div>
-        </UPageCard>
-
-        <p>process env : "{{ popo }}"</p>
+        <ClientOnly>
+            <UPageCard class="w-full max-w-md">
+                <UAuthForm
+                    :schema="schema"
+                    title="Login"
+                    description="Enter your credentials to access your account."
+                    icon="i-lucide-user"
+                    :fields="fields"
+                    @submit="handleLogin"
+                    :submit="{
+                        label: 'Submit',
+                        color: 'info',
+                        variant: 'subtle',
+                    }"
+                />
+                <div
+                    v-if="error"
+                    class="text-error-600 border-error-600 border text-center rounded-xl py-2 mt-4"
+                >
+                    Mot de passe incorrect
+                </div>
+            </UPageCard>
+        </ClientOnly>
     </div>
 </template>
