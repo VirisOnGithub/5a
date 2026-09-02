@@ -2,6 +2,8 @@
 import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
 import * as z from "zod";
 
+const config = useRuntimeConfig();
+
 const error = ref(false);
 const authCookie = useCookie("auth", { maxAge: 60 * 60 * 24 * 7 });
 
@@ -26,7 +28,7 @@ const schema = z.object({
 });
 
 function handleLogin(payload: FormSubmitEvent<Schema>) {
-    if (payload.data.password === process.env.POPO) {
+    if (payload.data.password === config.popoPassword) {
         authCookie.value = "authenticated";
         navigateTo("/");
     } else {
@@ -35,6 +37,8 @@ function handleLogin(payload: FormSubmitEvent<Schema>) {
 }
 
 type Schema = z.output<typeof schema>;
+
+const popo = process.env.POPO;
 </script>
 
 <template>
@@ -60,5 +64,7 @@ type Schema = z.output<typeof schema>;
                 Mot de passe incorrect
             </div>
         </UPageCard>
+
+        <p>process env : "{{ popo }}"</p>
     </div>
 </template>
