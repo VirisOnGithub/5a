@@ -10,7 +10,7 @@ export default defineNuxtRouteMiddleware((to) => {
 
   if (!isAuthenticated && to.path !== "/login") {
     // console.log("Redirected to login !");
-    return navigateTo("/login");
+    return navigateTo(`/login?to=${to.path}`);
   }
 
   if (isAuthenticated && to.path === "/login") {

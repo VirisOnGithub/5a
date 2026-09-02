@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { FormSubmitEvent, AuthFormField } from "@nuxt/ui";
 import * as z from "zod";
+const route = useRoute();
 
 const error = ref(false);
 
@@ -24,6 +25,10 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>;
 
+const target = Array.isArray(route.query.to)
+    ? route.query.to[0]
+    : route.query.to;
+
 async function handleLogin(payload: FormSubmitEvent<Schema>) {
     error.value = false;
 
@@ -33,7 +38,7 @@ async function handleLogin(payload: FormSubmitEvent<Schema>) {
             body: { password: payload.data.password },
         });
 
-        await navigateTo("/");
+        await navigateTo(target ?? "/");
     } catch (err) {
         error.value = true;
     }
